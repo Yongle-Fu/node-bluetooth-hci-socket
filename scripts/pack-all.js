@@ -44,10 +44,10 @@ function runNpm(args, envVars) {
     });
 }
 
-function cleanPrebuilt(config) {
-    console.log('Removing any locally existing .node binaries');
-    return runNpm(['run', 'clean-prebuilt'], config);
-}
+// function cleanPrebuilt(config) {
+//     console.log('Removing any locally existing .node binaries');
+//     return runNpm(['run', 'clean-prebuilt'], config);
+// }
 
 function prebuild(config) {
     console.log(`Building ${JSON.stringify(config)}`);
@@ -59,15 +59,9 @@ function packagePrebuilt(config) {
     return runNpm(['run', 'package-prebuilt'], config);
 }
 
-function publishPrebuilt(config) {
-    console.log(`Publishing ${JSON.stringify(config)}`);
-    return runNpm(['run', 'publish-prebuilt'], config);
-}
-
 function buildAndPublishAll(configs) {
     return configs.reduce((prev, config) => (
-        prev.then(() => cleanPrebuilt(config))
-            .then(() => prebuild(config))
+        prev.then(() => prebuild(config))
             .then(() => packagePrebuilt(config))
     ), Promise.resolve());
 }

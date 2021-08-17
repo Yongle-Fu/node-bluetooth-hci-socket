@@ -40,10 +40,8 @@
   "scripts": {
     "clean-prebuilt": "node-pre-gyp clean",
     "package-prebuilt": "node-pre-gyp package",
-    "publish-prebuilt": "node-pre-gyp-github publish",
-    "publish-all-prebuilt": "node scripts/publish-all-prebuilt.js",
-    "fetch-prebuilt": "node-pre-gyp install --fallback-to-build=false",
-    "install": "npm run fetch-prebuilt || npm run build",
+    "pack-all": "node scripts/pack-all.js",
+    "install": "node-pre-gyp install --fallback-to-build=true",
     "test": "jshint lib/*.js && node test.js"
   },
   "binary": {
