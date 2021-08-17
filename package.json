@@ -1,12 +1,12 @@
 {
-  "name": "@abandonware/bluetooth-hci-socket",
-  "version": "0.5.3-7",
+  "name": "cmsn-bluetooth-hci-socket",
+  "version": "0.6.0",
   "description": "Bluetooth HCI socket binding for Node.js",
   "main": "index.js",
   "types": "index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/abandonware/node-bluetooth-hci-socket.git"
+    "url": "https://github.com/Yongle-Fu/node-bluetooth-hci-socket.git"
   },
   "keywords": [
     "HCI",
@@ -28,25 +28,30 @@
   ],
   "dependencies": {
     "@mapbox/node-pre-gyp": "^1.0.5",
-    "debug": "^4.3.1",
+    "debug": "^4.3.2",
     "nan": "^2.14.2"
   },
   "optionalDependencies": {
-    "usb": "^1.6.3"
+    "usb": "^1.7.1"
   },
   "devDependencies": {
     "jshint": "^2.12.0"
   },
   "scripts": {
-    "install": "node-pre-gyp install --fallback-to-build",
+    "clean-prebuilt": "node-pre-gyp clean",
+    "package-prebuilt": "node-pre-gyp package",
+    "publish-prebuilt": "node-pre-gyp-github publish",
+    "publish-all-prebuilt": "node scripts/publish-all-prebuilt.js",
+    "fetch-prebuilt": "node-pre-gyp install --fallback-to-build=false",
+    "install": "npm run fetch-prebuilt || npm run build",
     "test": "jshint lib/*.js && node test.js"
   },
   "binary": {
     "module_name": "bluetooth_hci_socket",
-    "module_path": "./lib/binding/",
-    "host": "https://github.com/abandonware/node-bluetooth-hci-socket/releases/download/",
+    "module_path": "./build/Release",
     "package_name": "{module_name}-{version}-{node_abi}-{platform}-{arch}.tar.gz",
-    "remote_path": "{version}"
+    "host": "https://focus-resource.oss-cn-beijing.aliyuncs.com/universal/node-prebuild/{module_name}/",
+    "remote_path": "v{version}"
   },
   "jshintConfig": {
     "esversion": 6
