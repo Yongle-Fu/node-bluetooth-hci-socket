@@ -1,6 +1,6 @@
 {
   "name": "cmsn-bluetooth-hci-socket",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "Bluetooth HCI socket binding for Node.js",
   "main": "index.js",
   "types": "index.d.ts",
@@ -32,7 +32,7 @@
     "nan": "^2.14.2"
   },
   "optionalDependencies": {
-    "usb": "^1.7.1"
+    "usb": "^1.6.3"
   },
   "devDependencies": {
     "jshint": "^2.12.0"
@@ -41,7 +41,7 @@
     "clean-prebuilt": "node-pre-gyp clean",
     "package-prebuilt": "node-pre-gyp package",
     "pack-all": "node scripts/pack-all.js",
-    "install": "node-pre-gyp install --fallback-to-build=true",
+    "install": "node-pre-gyp install --fallback-to-build",
     "test": "jshint lib/*.js && node test.js"
   },
   "binary": {

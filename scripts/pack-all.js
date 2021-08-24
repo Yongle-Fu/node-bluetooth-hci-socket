@@ -66,11 +66,11 @@ function buildAndPublishAll(configs) {
     ), Promise.resolve());
 }
 
-if (!process.env.NODE_PRE_GYP_GITHUB_TOKEN) {
-    console.error('Environment variable NODE_PRE_GYP_GITHUB_TOKEN was not provided. ' +
-        'Unable to publish to GitHub.');
-    process.exit(1);
-}
+// if (!process.env.NODE_PRE_GYP_GITHUB_TOKEN) {
+//     console.error('Environment variable NODE_PRE_GYP_GITHUB_TOKEN was not provided. ' +
+//         'Unable to publish to GitHub.');
+//     process.exit(1);
+// }
 
 buildAndPublishAll(BUILD_CONFIGS)
     .catch(error => {
